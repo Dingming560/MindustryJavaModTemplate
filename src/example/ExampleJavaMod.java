@@ -12,10 +12,10 @@ public class ExampleJavaMod extends Mod {
 
     @Override
     public void loadContent() {
-        // 1. 内部 ID 用中文（底层注册的名字）
-        myDrill = new BeamDrill("高能等离子钻机");
+        // 1. 纯英文内部 ID，让图集打包器闭嘴
+        myDrill = new BeamDrill("plasma-drill");
         
-        // 2. 强制指定游戏 UI 的显示名（去掉模组前缀！）
+        // 2. 游戏 UI 显示纯中文，强制干掉前缀！
         myDrill.localizedName = "高能等离子钻机";
         
         myDrill.size = 2;
