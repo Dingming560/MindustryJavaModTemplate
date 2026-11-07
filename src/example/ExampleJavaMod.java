@@ -6,16 +6,15 @@ import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.world.blocks.production.BeamDrill;
 import mindustry.world.meta.BuildVisibility;
+import arc.graphics.Color;
 
 public class ExampleJavaMod extends Mod {
     public static BeamDrill myDrill;
 
     @Override
     public void loadContent() {
-        // 1. 纯英文内部 ID，让图集打包器闭嘴
         myDrill = new BeamDrill("plasma-drill");
         
-        // 2. 游戏 UI 显示纯中文，强制干掉前缀！
         myDrill.localizedName = "高能等离子钻机";
         
         myDrill.size = 2;
@@ -31,5 +30,12 @@ public class ExampleJavaMod extends Mod {
         
         myDrill.requirements(Category.production, ItemStack.with(Items.silicon, 20, Items.beryllium, 30));
         myDrill.consumePower(1.5f);
+
+        // 🌟 核心：控制方块本体发光层的颜色！
+        // 原版那种温暖的亮橙色/黄橙色
+        myDrill.glowColor = Color.valueOf("ffcc33"); 
+        
+        // 如果你想让泛光更亮、更明显，可以顺便加一句：
+        // myDrill.lightColor = Color.valueOf("ffcc33");
     }
 }
