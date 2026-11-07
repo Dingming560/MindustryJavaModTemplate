@@ -12,8 +12,11 @@ public class ExampleJavaMod extends Mod {
 
     @Override
     public void loadContent() {
-        // 中文内部 ID（既然你想用，咱们就保留）
+        // 1. 内部 ID 用中文（底层注册的名字）
         myDrill = new BeamDrill("高能等离子钻机");
+        
+        // 2. 强制指定游戏 UI 的显示名（去掉模组前缀！）
+        myDrill.localizedName = "高能等离子钻机";
         
         myDrill.size = 2;
         myDrill.health = 320;
@@ -28,8 +31,5 @@ public class ExampleJavaMod extends Mod {
         
         myDrill.requirements(Category.production, ItemStack.with(Items.silicon, 20, Items.beryllium, 30));
         myDrill.consumePower(1.5f);
-        
-        // 🌟 注意：这里删掉了所有的 drawer 和 DrawGlowRegion 代码！
-        // 因为原版 BeamDrill 底层会自动去找 "高能等离子钻机-glow.png" 并让它发光。
     }
 }
